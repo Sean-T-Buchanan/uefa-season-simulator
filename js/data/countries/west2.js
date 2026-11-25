@@ -1,0 +1,233 @@
+// Germany, France, Belgium, Switzerland, Austria — 2025/26 line-ups.
+// Team tuple: [name, code, rating, colour, capacity, demand, commercial]
+
+addCountry({
+  id: "GER",
+  name: "Germany",
+  flag: "🇩🇪",
+  cup: { name: "DFB-Pokal", short: "Pokal", divisions: ["GER1", "GER2"] },
+  divisions: [
+    {
+      id: "GER1", name: "Bundesliga", short: "Bundesliga", tier: 1,
+      format: { rr: 2 },
+      money: { tv: 60, ops: 25, ticket: 35, owner: [0, 15], wageRatio: 0.55, budget: 30 },
+      teams: [
+        ["Bayern Munich", "FCB", 88, "#DC052D", 75024, 1.12, 350],
+        ["Bayer Leverkusen", "LEV", 83, "#E32221", 30210, 1.0, 75],
+        ["Borussia Dortmund", "BVB", 83, "#FDE100", 81365, 1.15, 150],
+        ["RB Leipzig", "RBL", 81, "#DD0741", 47069, 0.95, 90],
+        ["Eintracht Frankfurt", "SGE", 79, "#E1000F", 58000, 1.08, 75],
+        ["VfB Stuttgart", "VFB", 78, "#E32219", 60449, 1.05, 60],
+        ["SC Freiburg", "SCF", 76, "#C8102E", 34700, 1.08, 35],
+        ["Hoffenheim", "TSG", 76, "#1961B5", 30150, 0.85, 40],
+        ["Borussia Mönchengladbach", "BMG", 74, "#1A1A1A", 54042, 1.0, 50],
+        ["VfL Wolfsburg", "WOB", 73, "#65B32E", 28917, 0.85, 70],
+        ["Werder Bremen", "SVW", 73, "#1D9053", 42100, 1.05, 45],
+        ["Mainz 05", "MAI", 73, "#C3141E", 33305, 0.95, 30],
+        ["Union Berlin", "FCU", 73, "#EB1923", 22012, 1.15, 35],
+        ["FC Augsburg", "FCA", 72, "#BA3733", 30660, 0.95, 30],
+        ["Hamburger SV", "HSV", 71, "#0A3F86", 57000, 1.1, 45],
+        ["FC Köln", "KOE", 71, "#ED1C24", 50000, 1.1, 50],
+        ["St. Pauli", "STP", 70, "#6F4E37", 29546, 1.15, 30],
+        ["Heidenheim", "FCH", 70, "#E2001A", 15000, 1.05, 22],
+      ],
+    },
+    {
+      id: "GER2", name: "2. Bundesliga", short: "2. Bundesliga", tier: 2,
+      format: { rr: 2 },
+      money: { tv: 12, ops: 8, ticket: 20, owner: [0, 5], wageRatio: 0.65, budget: 6, commercialShare: 0.35 },
+      teams: [
+        ["Schalke 04", "SCH", 68, "#004D9D", 62271, 1.0, 70],
+        ["Holstein Kiel", "KSV", 68, "#0A3B8C", 15034, 0.9, 15],
+        ["VfL Bochum", "BOC", 68, "#005CA9", 26000, 1.0, 25],
+        ["Hertha BSC", "BSC", 67, "#005CA9", 74475, 0.6, 45],
+        ["Fortuna Düsseldorf", "FOR", 66, "#DA251D", 54600, 0.6, 35],
+        ["Hannover 96", "HAN", 66, "#C8102E", 49000, 0.7, 30],
+        ["Kaiserslautern", "FCK", 65, "#E2001A", 49327, 0.85, 25],
+        ["Darmstadt 98", "DAR", 65, "#004E9E", 17650, 0.95, 15],
+        ["Paderborn", "SCP", 65, "#0A2240", 15000, 0.8, 12],
+        ["Elversberg", "SVE", 65, "#1C1C1C", 10000, 0.8, 6],
+        ["Magdeburg", "FCM", 64, "#0055A4", 30098, 0.85, 15],
+        ["Karlsruher SC", "KSC", 64, "#0058A8", 34302, 0.85, 20],
+        ["Nürnberg", "FCN", 64, "#9B1B30", 49923, 0.65, 30],
+        ["Arminia Bielefeld", "DSC", 64, "#005CA9", 26515, 1.0, 20],
+        ["Dynamo Dresden", "SGD", 63, "#FFD400", 32066, 0.95, 20],
+        ["Greuther Fürth", "SGF", 62, "#009B48", 16626, 0.7, 10],
+        ["Eintracht Braunschweig", "EBS", 62, "#FFD700", 23325, 0.85, 15],
+        ["Preußen Münster", "PRM", 61, "#00873E", 14300, 0.95, 8],
+      ],
+    },
+  ],
+});
+
+addCountry({
+  id: "FRA",
+  name: "France",
+  flag: "🇫🇷",
+  cup: { name: "Coupe de France", short: "Coupe", divisions: ["FRA1", "FRA2"] },
+  divisions: [
+    {
+      id: "FRA1", name: "Ligue 1", short: "Ligue 1", tier: 1,
+      format: { rr: 2 },
+      money: { tv: 15, ops: 15, ticket: 25, owner: [0, 40], wageRatio: 0.7, budget: 15 },
+      teams: [
+        ["Paris Saint-Germain", "PSG", 88, "#004170", 47929, 1.0, 330],
+        ["Marseille", "OLM", 89, "#2FAEE0", 67394, 0.95, 60],
+        ["Monaco", "ASM", 84, "#E7001F", 18523, 0.55, 35],
+        ["Lille", "LIL", 88, "#E01E13", 50186, 0.75, 35],
+        ["Lyon", "OLY", 87, "#1C3F94", 59186, 0.85, 50],
+        ["Lens", "RCL", 77, "#FFD700", 38223, 1.0, 25],
+        ["Strasbourg", "RCS", 76, "#009FE3", 26109, 1.0, 25],
+        ["Nice", "NIC", 75, "#C8102E", 36178, 0.6, 30],
+        ["Rennes", "REN", 75, "#E13327", 29778, 0.85, 30],
+        ["Brest", "BRE", 71, "#E30613", 15931, 0.95, 12],
+        ["Toulouse", "TFC", 71, "#5B2C83", 33150, 0.65, 15],
+        ["Paris FC", "PFC", 75, "#1B2A4A", 19904, 0.75, 25],
+        ["Nantes", "FCN", 70, "#FCD405", 35322, 0.85, 18],
+        ["Auxerre", "AJA", 69, "#0055A4", 18541, 0.85, 10],
+        ["Angers", "SCO", 68, "#1A1A1A", 18752, 0.75, 10],
+        ["Le Havre", "HAC", 68, "#6FA8DC", 25178, 0.6, 10],
+        ["Lorient", "FCL", 68, "#F58220", 18890, 0.85, 12],
+        ["Metz", "FCM", 67, "#7A1E3A", 28786, 0.6, 12],
+      ],
+    },
+    {
+      id: "FRA2", name: "Ligue 2", short: "Ligue 2", tier: 2,
+      format: { rr: 2 },
+      money: { tv: 3, ops: 4, ticket: 12, owner: [0, 6], wageRatio: 0.75, budget: 3, commercialShare: 0.3 },
+      teams: [
+        ["Saint-Étienne", "ASE", 67, "#009A44", 41965, 0.75, 25],
+        ["Reims", "SDR", 66, "#E2001A", 21029, 0.6, 15],
+        ["Montpellier", "MHS", 65, "#0C2A5B", 32939, 0.4, 15],
+        ["Troyes", "EST", 62, "#0055A4", 20400, 0.45, 10],
+        ["Guingamp", "EAG", 62, "#E2001A", 18378, 0.55, 6],
+        ["Dunkerque", "USD", 62, "#0055A4", 4933, 0.8, 4],
+        ["Clermont", "CLF", 61, "#9B1B30", 11980, 0.4, 8],
+        ["Bastia", "SCB", 61, "#0055A4", 16480, 0.45, 5],
+        ["Amiens", "ASC", 61, "#1C1C1C", 12097, 0.55, 6],
+        ["Annecy", "FCA", 60, "#E2001A", 15660, 0.4, 4],
+        ["Laval", "SLA", 60, "#F58220", 18467, 0.4, 5],
+        ["Grenoble", "GRE", 60, "#0055A4", 20068, 0.35, 5],
+        ["Nancy", "ASN", 60, "#E2001A", 20087, 0.45, 8],
+        ["Pau", "PAU", 59, "#FFD700", 4031, 0.75, 3],
+        ["Red Star", "RSF", 59, "#00A651", 3000, 0.9, 8],
+        ["Le Mans", "LMF", 59, "#E2001A", 25064, 0.3, 5],
+        ["Rodez", "RAF", 58, "#E2001A", 5955, 0.8, 3],
+        ["Boulogne", "USB", 57, "#E2001A", 14983, 0.25, 3],
+      ],
+    },
+  ],
+});
+
+addCountry({
+  id: "BEL",
+  name: "Belgium",
+  flag: "🇧🇪",
+  cup: { name: "Belgian Cup", short: "Cup", divisions: ["BEL1"] },
+  divisions: [
+    {
+      id: "BEL1", name: "Belgian Pro League", short: "Pro League", tier: 1,
+      format: {
+        rr: 2,
+        split: {
+          groups: [
+            { name: "Champions' play-offs", size: 6, rr: 2, carry: "half" },
+            { name: "Europe play-offs", size: 6, rr: 2, carry: "half" },
+            { name: "Relegation play-offs", size: 4, rr: 2, carry: "half" },
+          ],
+        },
+      },
+      money: { tv: 6, ops: 6, ticket: 20, owner: [0, 8], wageRatio: 0.7, budget: 6 },
+      teams: [
+        ["Club Brugge", "CLB", 76, "#0067B1", 29062, 0.85, 30],
+        ["Union Saint-Gilloise", "USG", 72, "#FFD100", 9400, 0.95, 12],
+        ["Anderlecht", "AND", 71, "#5B2C83", 22500, 0.9, 25],
+        ["Genk", "GNK", 70, "#0055A4", 23718, 0.8, 15],
+        ["Gent", "GNT", 69, "#0055A4", 20000, 0.85, 15],
+        ["Antwerp", "ANT", 69, "#E2001A", 16649, 0.9, 18],
+        ["Standard Liège", "STL", 67, "#E2001A", 27670, 0.85, 15],
+        ["Mechelen", "KVM", 64, "#FFD700", 16672, 0.8, 8],
+        ["Westerlo", "WES", 63, "#FFD700", 8035, 0.75, 5],
+        ["Charleroi", "CHA", 63, "#1A1A1A", 14000, 0.6, 7],
+        ["OH Leuven", "OHL", 62, "#C8102E", 10020, 0.7, 8],
+        ["Cercle Brugge", "CER", 61, "#00A651", 29062, 0.25, 6],
+        ["Sint-Truiden", "STV", 61, "#FFD700", 14600, 0.75, 6],
+        ["Zulte Waregem", "ZWA", 60, "#E2001A", 12500, 0.6, 6],
+        ["Dender", "DEN", 59, "#E2001A", 6429, 0.8, 3],
+        ["La Louvière", "RAL", 58, "#00A651", 8050, 0.6, 3],
+      ],
+    },
+  ],
+});
+
+addCountry({
+  id: "SUI",
+  name: "Switzerland",
+  flag: "🇨🇭",
+  cup: { name: "Swiss Cup", short: "Cup", divisions: ["SUI1"] },
+  divisions: [
+    {
+      id: "SUI1", name: "Swiss Super League", short: "Super League", tier: 1,
+      format: {
+        rr: 3,
+        split: {
+          groups: [
+            { name: "Championship group", size: 6, rr: 1, carry: "full" },
+            { name: "Relegation group", size: 6, rr: 1, carry: "full" },
+          ],
+        },
+      },
+      money: { tv: 3, ops: 5, ticket: 20, owner: [0, 5], wageRatio: 0.7, budget: 4 },
+      teams: [
+        ["Basel", "BAS", 70, "#E2001A", 38512, 0.6, 20],
+        ["Young Boys", "YBB", 70, "#FFD700", 31120, 0.85, 20],
+        ["Lugano", "LUG", 67, "#1A1A1A", 6330, 0.6, 10],
+        ["Servette", "SER", 66, "#8B0000", 30084, 0.35, 8],
+        ["Lausanne-Sport", "LAU", 63, "#003D7C", 12544, 0.5, 6],
+        ["Luzern", "LUZ", 63, "#0055A4", 16490, 0.75, 7],
+        ["St. Gallen", "STG", 63, "#00A651", 19456, 0.85, 7],
+        ["Zürich", "FCZ", 62, "#0055A4", 26104, 0.4, 8],
+        ["Sion", "SIO", 61, "#E2001A", 14283, 0.6, 6],
+        ["Thun", "THU", 59, "#E2001A", 10014, 0.7, 3],
+        ["Grasshoppers", "GCZ", 58, "#003D7C", 26104, 0.25, 7],
+        ["Winterthur", "WIN", 56, "#E2001A", 8550, 0.85, 3],
+      ],
+    },
+  ],
+});
+
+addCountry({
+  id: "AUT",
+  name: "Austria",
+  flag: "🇦🇹",
+  cup: { name: "Austrian Cup", short: "Cup", divisions: ["AUT1"] },
+  divisions: [
+    {
+      id: "AUT1", name: "Austrian Bundesliga", short: "Bundesliga", tier: 1,
+      format: {
+        rr: 2,
+        split: {
+          groups: [
+            { name: "Championship group", size: 6, rr: 2, carry: "half" },
+            { name: "Qualifying group", size: 6, rr: 2, carry: "half" },
+          ],
+        },
+      },
+      money: { tv: 3, ops: 5, ticket: 20, owner: [0, 5], wageRatio: 0.7, budget: 4 },
+      teams: [
+        ["Red Bull Salzburg", "RBS", 74, "#E30613", 30188, 0.3, 40],
+        ["Sturm Graz", "STU", 70, "#1A1A1A", 16364, 0.95, 12],
+        ["Rapid Vienna", "RAP", 67, "#00A651", 28345, 0.85, 15],
+        ["Austria Vienna", "FAK", 65, "#5B2C83", 17656, 0.7, 10],
+        ["LASK", "LAS", 65, "#1A1A1A", 19080, 0.7, 10],
+        ["Wolfsberger AC", "WAC", 63, "#1A1A1A", 7300, 0.55, 4],
+        ["Blau-Weiss Linz", "BWL", 60, "#0055A4", 5595, 0.9, 3],
+        ["Hartberg", "HAR", 59, "#0055A4", 4635, 0.6, 2],
+        ["Grazer AK", "GAK", 58, "#E2001A", 16364, 0.4, 3],
+        ["Altach", "ALT", 58, "#1A1A1A", 8500, 0.6, 3],
+        ["WSG Tirol", "WSG", 57, "#00A651", 16008, 0.2, 3],
+        ["SV Ried", "RIE", 57, "#006400", 7680, 0.75, 3],
+      ],
+    },
+  ],
+});

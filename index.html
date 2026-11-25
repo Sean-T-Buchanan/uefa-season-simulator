@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pyramid Manager</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚽</text></svg>">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Club selection -->
+  <section id="setup" class="setup" hidden>
+    <header class="setup-hero">
+      <h1>Pyramid Manager</h1>
+      <p>Pick any club in Europe, run its finances, and chase league titles, cups and European glory, match by match.</p>
+    </header>
+    <section class="careers" aria-labelledby="careers-title">
+      <div class="panel-head">
+        <h2 id="careers-title">Your careers</h2>
+        <div class="careers-actions">
+          <button class="btn small ghost" id="import-btn" data-tip="Add a career from an exported file">Import career…</button>
+          <input type="file" id="import-file" accept=".json,application/json" hidden>
+        </div>
+      </div>
+      <div id="career-list" class="career-list"></div>
+    </section>
+    <h2 class="new-career-title">Start a new career</h2>
+    <div class="country-pick"><label for="country-select" class="muted small">Country</label><select id="country-select"></select></div>
+    <div class="tabs" id="league-tabs" role="tablist"></div>
+    <div class="team-grid" id="team-grid"></div>
+    <div class="setup-footer">
+      <div id="setup-selection" class="muted">Select a club to manage.</div>
+      <label class="setup-opt"><span class="muted small">Your name</span><input id="manager-name" type="text" maxlength="40" placeholder="Manager" autocomplete="off"></label>
+      <label class="setup-opt check" data-tip="If unticked, you can't be sacked (you can still change clubs)"><input id="sackable" type="checkbox" checked> <span class="small">Board can sack me</span></label>
+      <button id="start-btn" class="btn primary" disabled>Start career</button>
+    </div>
+  </section>
+
+  <!-- Main game -->
+  <section id="game" class="game" hidden>
+    <header class="topbar">
+      <div class="club-id" id="club-id"></div>
+      <nav class="page-nav" id="page-nav" aria-label="Pages">
+        <button data-page="club" class="active" aria-current="page">Club</button>
+        <button data-page="analysis">Analysis</button>
+        <button data-page="finances">Finances</button>
+        <button data-page="cups">Cups</button>
+        <button data-page="europe">Europe</button>
+        <button data-page="records">Records</button>
+        <button data-page="manager">Manager</button>
+      </nav>
+      <div class="topbar-stats" id="topbar-stats"></div>
+      <span class="save-status muted small" id="save-status" aria-live="polite"></span>
+      <button class="btn ghost small" id="careers-btn" data-tip="Your career is saved automatically. See all your careers or start another.">Careers</button>
+    </header>
+
+    <main class="layout" id="page-club">
+      <aside class="panel resources" aria-label="Resources">
+        <div class="panel-head">
+          <h2>Resources</h2>
+          <span class="chip" id="window-chip"></span>
+        </div>
+        <div class="cash" id="cash"></div>
+        <div class="alloc-actions">
+          <button class="btn small" id="preset-balanced" data-tip="Spreads your safe-to-spend amount across all areas">Balanced split</button>
+          <button class="btn small ghost" id="preset-clear">Clear unlocked</button>
+        </div>
+        <div id="alloc-list" class="alloc-list"></div>
+        <div class="strength" id="strength"></div>
+        <div class="board-box" id="board"></div>
+        <div class="stadium-box" id="stadium"></div>
+      </aside>
+
+      <section class="centre">
+        <div class="panel match-card" id="match-card"></div>
+        <div class="panel tactics" id="tactics"></div>
+        <div class="panel">
+          <div class="panel-head"><h2 id="outlook-title">Season outlook</h2><span class="muted small" id="outlook-sub">300 simulations of the remaining fixtures</span></div>
+          <div id="outlook"></div>
+        </div>
+        <div class="panel two-col">
+          <div>
+            <h2>Latest results</h2>
+            <div id="latest"></div>
+          </div>
+          <div>
+            <h2>Club news</h2>
+            <ul id="news" class="news"></ul>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel side">
+        <div class="tabs small" id="side-tabs" role="tablist">
+          <button role="tab" data-tab="table" class="active">Table</button>
+          <button role="tab" data-tab="fixtures">Fixtures</button>
+          <button role="tab" data-tab="cups">Cups</button>
+          <button role="tab" data-tab="clubs">Clubs</button>
+          <button role="tab" data-tab="managers">Managers</button>
+          <button role="tab" data-tab="history">History</button>
+        </div>
+        <div id="side-content"></div>
+      </aside>
+    </main>
+    <section class="page" id="page-analysis" hidden></section>
+    <section class="page" id="page-finances" hidden></section>
+    <section class="page" id="page-cups" hidden></section>
+    <section class="page" id="page-europe" hidden></section>
+    <section class="page" id="page-records" hidden></section>
+    <section class="page" id="page-manager" hidden></section>
+  </section>
+
+  <dialog id="summary-dialog" class="dialog"></dialog>
+  <dialog id="confirm-dialog" class="dialog small-dialog">
+    <h2 id="confirm-title"></h2>
+    <p class="muted" id="confirm-text"></p>
+    <div class="dialog-actions">
+      <button class="btn ghost" id="confirm-cancel">Cancel</button>
+      <button class="btn danger" id="confirm-ok"></button>
+    </div>
+  </dialog>
+  <dialog id="rename-dialog" class="dialog small-dialog">
+    <form method="dialog" id="rename-form">
+      <h2>Rename career</h2>
+      <input id="rename-input" type="text" maxlength="60" class="text-input" aria-label="Career name">
+      <div class="dialog-actions">
+        <button class="btn ghost" type="button" id="rename-cancel">Cancel</button>
+        <button class="btn primary" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="job-dialog" class="dialog"></dialog>
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/data/names.js"></script>
+  <script src="js/data/world.js"></script>
+  <script src="js/data/countries/west1.js"></script>
+  <script src="js/data/countries/west2.js"></script>
+  <script src="js/data/countries/east1.js"></script>
+  <script src="js/data/countries/north.js"></script>
+  <script src="js/data/countries/central.js"></script>
+  <script src="js/data/countries/small.js"></script>
+  <script src="js/data/derbies.js"></script>
+  <script src="js/crests.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/leagues.js"></script>
+  <script src="js/tactics.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/managers.js"></script>
+  <script src="js/europe.js"></script>
+  <script src="js/achievements.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/careers.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
